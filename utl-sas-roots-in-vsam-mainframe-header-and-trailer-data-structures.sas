@@ -14,6 +14,10 @@
     WPS:  Long record with header with mutiple trailer records
 
 
+github
+https://tinyurl.com/yyejkv3r
+https://github.com/rogerjdeangelis/utl-sas-roots-in-vsam-mainframe-header-and-trailer-data-structures
+
 Realted StackOverflow
 https://tinyurl.com/bddavzje
 https://stackoverflow.com/questions/75451911/complete-columns-based-on-values-that-precede-data-as-table-format-in-sas
@@ -152,3 +156,78 @@ run;quit;
 */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+data fix;
+informat stock $12.;
+infile "%sysfunc(pathname(work))/vsm.txt";
+input stock trailers @ ;
+do yr= 2001 to (2000+trailers);
+  input qtr1 qtr2 qtr3 qtr4 @;
+  output;
+end;
+drop trailers;
+cards4;
+ibm 3 104 108 105 108 114 118 115 110 124 128 125 120
+ge 3 134 138 135 130 144 148 145 140 154 158 155 158
+;;;;
+run;quit;
+
+
+
+Klirs 5 10 92 90 20 12 10 30 11 93 40 89 30 50 89 30
+
+
+Blars
+10      83287   10.00
+20      1748956 30.00
+30  2222222 73.00
+40          833709  90.00
+Klirs
+10      922222  90.50
+20      1222222 10.00
+30  1111111 93.33
+40      8998877 300.90
+
+
+
+
+
+Blars
+10 83 10
+20 17 30
+30 22 73
+40 83 90
+Klirs
+10 92 90
+20 12 10
+30 11 93
+40 89 30
+*/ /*************************************************************************************************************************
+*/ /*
+*/ /*
+*/ /*
+*/ /*  Up to 40 obs from last table WORK.WANT total obs=6 09APR2023:17:05:31
+*/ /*
+*/ /*  Obs    STOCK     YR     QTR1    QTR2    QTR3    QTR4
+*/ /*
+*/ /*   1      IBM     2001     104     108     105     108
+*/ /*   2      IBM     2002     114     118     115     110
+*/ /*   3      IBM     2003     124     128     125     120
+*/ /*
+*/ /*   4      GE      2001     134     138     135     130
+*/ /*   5      GE      2002     144     148     145     140
+*/ /*   6      GE      2003     154     158     155     158
+*/ /*
+*/ /*************************************************************************************************************************
